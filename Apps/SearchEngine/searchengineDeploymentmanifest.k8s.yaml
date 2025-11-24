@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: search-engine
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: search-engine
+  template:
+    metadata:
+      labels:
+        app: search-engine
+    spec:
+      containers:
+        - name: search-engine
+          image: search-engine
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+    
